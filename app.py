@@ -1,5 +1,6 @@
 import streamlit as st
 import degirum as dg
+from PIL import Image
 
 zoo = dg.connect_model_zoo('dgcps://cs.degirum.com', token=st.secrets['DEGIRUM_CLOUD_TOKEN'])
 
