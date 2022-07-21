@@ -7,11 +7,11 @@ zoo = dg.connect_model_zoo('dgcps://cs.degirum.com', token=st.secrets['DEGIRUM_C
 st.title('DeGirum Cloud Demo')
 
 st.header('Specify Model Options Below')
-precision=st.radio("Choose model precision",("Float","Quant","Don't Care"),index=2)
-runtime_agent=st.radio("Choose runtime agent",("TFLite","N2X","Don't Care"),index=2)
-precision=precision if precision!="Don't Care" else ""
-runtime_agent=runtime_agent if runtime_agent!="Don't Care" else "" 
-model_options=zoo.list_models(device='ORCA',precision=precision,runtime=runtime_agent)
+all_orca_models=zoo.list_models(device='ORCA',)
+model_options=[]
+for model_name in all_orca_models:
+    if 'yamnet' not in model_name and 'comma' not in model_name:
+        model_options.append(model_name)
 st.header('Choose and Run a Model')
 st.text('Select a model and upload an image. Then click on the submit button')
 with st.form("model_form"):
