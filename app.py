@@ -4,9 +4,8 @@ from PIL import Image
 
 zoo = dg.connect_model_zoo('dgcps://cs.degirum.com', token=st.secrets['DEGIRUM_CLOUD_TOKEN'])
 
-st.title('DeGirum Cloud Demo')
+st.title('DeGirum Cloud Demo for ORCA Models')
 
-st.header('Specify Model Options Below')
 all_orca_models=zoo.list_models(device='ORCA',)
 model_options=[]
 for model_name in all_orca_models:
